@@ -1,17 +1,29 @@
 import React from 'react';
-import { Navbar } from 'react-bootstrap';
+
+import { Navbar, Nav } from 'react-bootstrap';
+import { GoMarkGithub } from 'react-icons/go';
+import { FaMediumM, FaLinkedin, FaInstagram } from 'react-icons/fa';
+import { FiMail } from 'react-icons/fi';
 
 const Footer = () => {
+    const emailLink = "mailto: sumeetrohra1@gmail.com";
+    const instagramLink = "https://www.instagram.com/sumeet_r0hra/";
+    const mediumLink = "https://medium.com/@rohrasumeet";
+    const linkedinLink = "https://www.linkedin.com/in/sumeetrohra/";
+    const githubLink = "https://github.com/sumeetrohra";
     return (
-        <Navbar expand="lg" variant="dark" bg="dark" fixed="bottom">
-            <Navbar.Brand href="#">Contact</Navbar.Brand>
-            <Navbar.Collapse className="justify-content-end">
-                <Navbar.Text>
-                <i class="fab fa-medium"></i>
-                </Navbar.Text>
-            </Navbar.Collapse>
+        <Navbar expand="lg" variant="dark" bg="dark" fixed="bottom" >
+            <Navbar.Brand className="hide-lessthan-400">Contact</Navbar.Brand>
+            <Navbar id="responsive-nav-bar">
+                <Nav>
+                    <Nav.Link href={emailLink}><FiMail className="bigger-icon" /></Nav.Link>
+                    <Nav.Link onClick={() => window.open(instagramLink)}><FaInstagram className="bigger-icon" /></Nav.Link>
+                    <Nav.Link onClick={() => window.open(mediumLink)}><FaMediumM className="bigger-icon" /></Nav.Link>
+                    <Nav.Link onClick={() => window.open(linkedinLink)}><FaLinkedin className="bigger-icon" /></Nav.Link>
+                    <Nav.Link onClick={() => window.open(githubLink)}><GoMarkGithub className="bigger-icon" /></Nav.Link>
+                </Nav>
+            </Navbar>
         </Navbar>
     );
 }
-// https://www.flaticon.com/search?word=gmail use icons from here
 export default Footer;

@@ -1,3 +1,30 @@
 .main {
     padding-bottom: 10%;
 }
+
+.bigger-icon {
+    height: 30px;
+    width: 30px;
+    color: white;
+}
+
+.bg-dark {
+    background-color: #000!important;
+}
+
+.navbar-expand-lg {
+    justify-content: space-between;
+}
+
+#responsive-nav-bar {
+    padding: 0;
+}
+
+@media screen and (max-width: 400px) {
+    .hide-lessthan-400 {
+        display: none;
+    }
+    .navbar-expand-lg {
+        justify-content: flex-end;
+    }
+}
