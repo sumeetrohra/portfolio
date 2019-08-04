@@ -8,7 +8,7 @@ const SideBar = (props) => {
     const { onChange } = props;
     return (
         <SideNav
-            style={{ position: "fixed" }}
+            style={{ position: "fixed", background: "#3d0000" }}
             onToggle={(expanded) => {
                 expanded ? onChange("240px") : onChange("64px");
             }}
