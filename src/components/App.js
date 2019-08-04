@@ -1,18 +1,26 @@
 import React from 'react';
 import Footer from './Footer';
+import Home from './Home';
+import SideBar from './SideBar';
 
-function App() {
-  return (
-    <div>
-      <div className="main">
-        <h1>Hi,</h1>
-        <h1>I'm</h1>
-        <h1>Sumeet Rohra.</h1>
-        <h5>Not your average Software Engineer...</h5>
+class App extends React.Component {
+  state = {
+    marginLeft: "64px",
+  }
+  render() {
+    const onChange = (updatedMargin) => {
+      this.setState({ marginLeft: updatedMargin });
+    }
+    return (
+      <div>
+        <SideBar onChange={onChange} />
+        <Home style={{ marginLeft: this.state.marginLeft }} />
+        <Footer />
       </div>
-      <Footer />
-    </div>
-  );
+    );
+  }
 }
 
 export default App;
+
+// App bar from here: https://reactjsexample.com/react-side-nav-component/
