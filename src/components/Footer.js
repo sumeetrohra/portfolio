@@ -1,10 +1,11 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import { Navbar, Nav, Button } from 'react-bootstrap';
 import { GoMarkGithub } from 'react-icons/go';
 import { FaMediumM, FaLinkedin, FaInstagram } from 'react-icons/fa';
 import { FiMail } from 'react-icons/fi';
 
-const Footer = () => {
+const Footer = (props) => {
     const emailLink = "mailto: sumeetrohra1@gmail.com";
     const instagramLink = "https://www.instagram.com/sumeet_r0hra/";
     const mediumLink = "https://medium.com/@rohrasumeet";
@@ -20,15 +21,12 @@ const Footer = () => {
                     <Nav.Link className="footer-hover-effect" onClick={() => window.open(mediumLink)}><FaMediumM className="bigger-icon" /></Nav.Link>
                     <Nav.Link className="footer-hover-effect" onClick={() => window.open(linkedinLink)}><FaLinkedin className="bigger-icon" /></Nav.Link>
                     <Nav.Link className="footer-hover-effect" onClick={() => window.open(githubLink)}><GoMarkGithub className="bigger-icon" /></Nav.Link>
+                    <div className="vl"></div>
                     <Button
-                        className="footer-hover-effect pulse"
+                        className="footer-hover-effect play-button"
                         variant="light"
-                        style={{
-                            fontSize: "16px",
-                            fontWeight: 800,
-                            margin: "5px",
-                            borderRadius: "0px",
-                        }}>
+                        onClick={() => props.history.push('/play')}
+                    >
                         Let's Play
                     </Button>
                 </Nav>
@@ -36,4 +34,4 @@ const Footer = () => {
         </Navbar >
     );
 }
-export default Footer;
+export default withRouter(Footer);

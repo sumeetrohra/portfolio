@@ -3,7 +3,7 @@ import Typist from 'react-typist';
 
 const Home = () => {
     return (
-        <div className="main">
+        <div className="main default">
             <div className="main-name">
                 <Typist cursor={{ show: false }}>
                     <Typist.Delay ms={2000} />
@@ -14,7 +14,7 @@ const Home = () => {
                 </Typist>
             </div>
             <div className="display-image">
-                <img src="https://drive.google.com/uc?id=1d1NOe3c5fS8okka1lkSqX9HlAPY_KAFM" alt="Me" className="my-image" />
+                <img src="https://drive.google.com/uc?id=1c86vnECYUJD1U5YLyS1iILl-KPtE7eLV" alt="Me" className="my-image" />
             </div>
         </div>
     );

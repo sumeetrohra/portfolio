@@ -1,7 +1,10 @@
-.main {
+.default {
     margin-left: 84px;
     padding: 1%;
     padding-bottom: 60px;
+}
+
+.main {
     display: flex;
     justify-content: space-around;
     padding-top:6%;
@@ -49,6 +52,22 @@ h5 {
 
 #responsive-nav-bar {
     padding: 0;
+}
+
+.vl {
+    border-left: 2px solid white;
+}
+
+.play-button {
+    font-size: 16px;
+    font-weight: 800;
+    margin: 5px;
+    margin-left: 10px;
+    border-radius: 0px;
+}
+
+.nav-item {
+    padding-bottom: 10px;
 }
 
 @media screen and (max-width: 500px) {
