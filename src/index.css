@@ -70,7 +70,7 @@ h5 {
     padding-bottom: 10px;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 576px) {
     .main {
         padding: 2%;
         padding-bottom: 60px;
@@ -105,5 +105,19 @@ h5 {
     .footer-hover-effect:hover {
         position: relative;
         bottom: 1vw;
+    }
+    #my-card-columns {
+        display: flex !important;
+        align-items: space-around !important;
+        flex-wrap: wrap !important;
+        justify-content: space-around !important;
+        padding-bottom: 100px !important;
+    }
+    
+    #my-card {
+        margin-bottom: 40px;
+        border-radius: 5px !important;
+        cursor: pointer !important;
+        width: 100% !important;
     }
 }
