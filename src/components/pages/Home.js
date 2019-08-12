@@ -1,6 +1,8 @@
 import React from 'react';
 import Typist from 'react-typist';
 
+import { profileImage } from '../URLs';
+
 const Home = () => {
     return (
         <div className="main default">
@@ -14,7 +16,7 @@ const Home = () => {
                 </Typist>
             </div>
             <div className="display-image">
-                <img src="https://drive.google.com/uc?id=1c86vnECYUJD1U5YLyS1iILl-KPtE7eLV" alt="Me" className="my-image" />
+                <img src={profileImage} alt="Me" className="my-image" />
             </div>
         </div>
     );

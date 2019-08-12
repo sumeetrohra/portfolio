@@ -31,7 +31,7 @@ const SvgImage = (props) => {
 const Skills = () => {
     return (
         <>
-            <h1 className="default">Skills</h1>
+            <h1 className="default">Skills.</h1>
             <Container>
                 <Row style={{ paddingLeft: "60px", paddingBottom: "60px" }}>
                     <SvgImage image={html5svg} name="HTML 5" />

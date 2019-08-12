@@ -4,11 +4,10 @@ import SideNav, { NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
 import { FaHome, FaBloggerB, FaFileCode, FaSlideshare, FaFilePdf } from 'react-icons/fa';
 import { GoGitBranch } from 'react-icons/go';
 
-import { RESUME } from '../URLs';
+import { RESUME } from './URLs';
 import '@trendmicro/react-sidenav/dist/react-sidenav.css';
 
 const SideBar = (props) => {
-    console.log(props);
     const { iconStyle, textStyle, sideNavStyle } = styles;
     return (
         <SideNav

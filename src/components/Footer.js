@@ -5,7 +5,7 @@ import { GoMarkGithub } from 'react-icons/go';
 import { FaMediumM, FaLinkedin, FaInstagram } from 'react-icons/fa';
 import { FiMail } from 'react-icons/fi';
 
-import { instagramLink, emailLink, mediumLink, linkedinLink, githubLink } from '../URLs';
+import { instagramLink, emailLink, mediumLink, linkedinLink, githubLink } from './URLs';
 
 const Footer = (props) => {
     return (
