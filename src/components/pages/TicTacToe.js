@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Button } from 'react-bootstrap';
+
 import './TicTacToe.css';
 
 class TicTacToe extends Component {
@@ -13,6 +15,7 @@ class TicTacToe extends Component {
       player_two_symbol: 'O',
       x_turn: true,
       board: ["", "", "", "", "", "", "", "", ""],
+      dialog: 'Beat me if you can...'
     };
   }
 
@@ -23,7 +26,7 @@ class TicTacToe extends Component {
         update_board[index] = this.state.player_one_symbol;
 
         // Update the state
-        this.setState({ board: update_board });
+        this.setState({ board: update_board, dialog: 'Beat me if you can...' });
 
         let ai_index = find_best_move(update_board);
         if (ai_index !== -4) update_board[ai_index] = this.state.player_two_symbol;
@@ -43,24 +46,32 @@ class TicTacToe extends Component {
   render() {
     let have_winner = winner(this.state.board);
     let keep_playing = have_winner === null ? true : false;
-
+    const { dialog } = this.state;
     if (have_winner !== null) {
-      this.handleResetButton();
-      alert(have_winner + " won!");
+      if (dialog !== 'I Win') {
+        this.setState({
+          dialog: 'I Win',
+          board: ["", "", "", "", "", "", "", "", ""],
+          x_turn: true,
+        });
+      }
     }
 
     return (
       <div className="master default">
+        <h1>Tic Tac Toe</h1>
         <div className="game">
           <div className="board">
             {this.state.board.map((cell, index) => {
-              return <div className="square" key={index} onClick={() => this.handleCellClick(index, keep_playing)}> {cell} </div>
+              console.log(cell, index);
+              return <div className={`square sq${index}`} key={index} onClick={() => this.handleCellClick(index, keep_playing)}> {cell} </div>
             })}
           </div>
         </div>
         <div className="button-wrapper">
-          <div className="reset-button" onClick={this.handleResetButton}> Reset </div>
+          <Button className="reset-button" variant="dark" onClick={this.handleResetButton}> Reset </Button>
         </div>
+        <h1>{this.state.dialog}</h1>
       </div>
     );
   }
