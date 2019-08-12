@@ -1,13 +1,15 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 import SideNav, { NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
 import { FaHome, FaBloggerB, FaFileCode, FaSlideshare, FaFilePdf } from 'react-icons/fa';
 import { GoGitBranch } from 'react-icons/go';
 
-import { RESUME } from './URLs';
+// import { RESUME } from './URLs';
 import '@trendmicro/react-sidenav/dist/react-sidenav.css';
 
 const SideBar = (props) => {
+    const url = props.data ? props.data.resumeUrl : 'not available';
     const { iconStyle, textStyle, sideNavStyle } = styles;
     return (
         <SideNav
@@ -55,7 +57,7 @@ const SideBar = (props) => {
                         Talks
                     </NavText>
                 </NavItem>
-                <NavItem className="nav-item" onClick={() => window.open(RESUME)}>
+                <NavItem className="nav-item" onClick={() => window.open(url)}>
                     <NavIcon>
                         <FaFilePdf style={iconStyle} />
                     </NavIcon>
@@ -86,4 +88,8 @@ const styles = {
     },
 }
 
-export default withRouter(SideBar);
+const mapStateToProps = ({ data }) => {
+    return { data };
+};
+
+export default connect(mapStateToProps, null)(withRouter(SideBar));

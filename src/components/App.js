@@ -1,6 +1,8 @@
 import React, { lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
 
+import { fetchData } from '../actions';
 import Footer from './Footer';
 import Home from './pages/Home';
 import SideBar from './SideBar';
@@ -12,6 +14,10 @@ const TicTacToe = lazy(() => import("./pages/TicTacToe"));
 const Talks = lazy(() => import("./pages/Talks"));
 
 class App extends React.Component {
+  componentDidMount() {
+    this.props.fetchData()
+  }
+
   render() {
     return (
       <div className="parent">
@@ -41,6 +47,10 @@ function WaitingComponent(Component) {
   );
 }
 
-export default App;
+const mapStateToProps = ({ data }) => {
+  return { data };
+}
+
+export default connect(mapStateToProps, { fetchData })(App);
 
 // App bar from here: https://reactjsexample.com/react-side-nav-component/

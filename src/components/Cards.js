@@ -25,7 +25,6 @@ const cardStyle = {
 };
 
 const Cards = (props) => {
-    console.log(props);
     return (
         <div className="default" >
             <h1 style={cardStyle.h1}>{props.name}</h1>

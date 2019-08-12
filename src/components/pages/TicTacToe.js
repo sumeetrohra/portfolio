@@ -68,7 +68,6 @@ class TicTacToe extends Component {
         <div className="game">
           <div className="board">
             {this.state.board.map((cell, index) => {
-              console.log(cell, index);
               return <div className={`square sq${index}`} key={index} onClick={() => this.handleCellClick(index, keep_playing)}> {cell} </div>
             })}
           </div>

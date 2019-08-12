@@ -1,5 +1,3 @@
-export const RESUME = 'https://drive.google.com/open?id=1Gf5rMlXTEr7_hy_F9m_ZZg9aoSX4vTTV';
-
 export const emailLink = "mailto: sumeetrohra1@gmail.com";
 export const instagramLink = "https://www.instagram.com/sumeet_r0hra/";
 export const mediumLink = "https://medium.com/@rohrasumeet";
