@@ -5,12 +5,9 @@ import { GoMarkGithub } from 'react-icons/go';
 import { FaMediumM, FaLinkedin, FaInstagram } from 'react-icons/fa';
 import { FiMail } from 'react-icons/fi';
 
+import { instagramLink, emailLink, mediumLink, linkedinLink, githubLink } from '../URLs';
+
 const Footer = (props) => {
-    const emailLink = "mailto: sumeetrohra1@gmail.com";
-    const instagramLink = "https://www.instagram.com/sumeet_r0hra/";
-    const mediumLink = "https://medium.com/@rohrasumeet";
-    const linkedinLink = "https://www.linkedin.com/in/sumeetrohra/";
-    const githubLink = "https://github.com/sumeetrohra";
     return (
         <Navbar expand="lg" variant="dark" bg="dark" fixed="bottom" >
             <Navbar.Brand className="hide-lessthan-400">Contact</Navbar.Brand>

@@ -1,9 +1,10 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import SideNav, { NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
-import { FaHome, FaBloggerB, FaFileCode, FaSlideshare } from 'react-icons/fa';
+import { FaHome, FaBloggerB, FaFileCode, FaSlideshare, FaFilePdf } from 'react-icons/fa';
 import { GoGitBranch } from 'react-icons/go';
 
+import { RESUME } from '../URLs';
 import '@trendmicro/react-sidenav/dist/react-sidenav.css';
 
 const SideBar = (props) => {
@@ -53,6 +54,14 @@ const SideBar = (props) => {
                     </NavIcon>
                     <NavText style={textStyle}>
                         Talks
+                    </NavText>
+                </NavItem>
+                <NavItem className="nav-item" onClick={() => window.open(RESUME)}>
+                    <NavIcon>
+                        <FaFilePdf style={iconStyle} />
+                    </NavIcon>
+                    <NavText style={textStyle}>
+                        Resume
                     </NavText>
                 </NavItem>
             </SideNav.Nav>
