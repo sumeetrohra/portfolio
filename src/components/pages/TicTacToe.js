@@ -57,9 +57,14 @@ class TicTacToe extends Component {
       }
     }
 
+    const h1Style = {
+      paddingBottom: "20px",
+      textAlign: "center",
+    }
+
     return (
       <div className="master default">
-        <h1>Tic Tac Toe</h1>
+        <h1 style={h1Style} >Tic Tac Toe</h1>
         <div className="game">
           <div className="board">
             {this.state.board.map((cell, index) => {
@@ -71,7 +76,7 @@ class TicTacToe extends Component {
         <div className="button-wrapper">
           <Button className="reset-button" variant="dark" onClick={this.handleResetButton}> Reset </Button>
         </div>
-        <h1>{this.state.dialog}</h1>
+        <h1 style={h1Style}>{this.state.dialog}</h1>
       </div>
     );
   }
