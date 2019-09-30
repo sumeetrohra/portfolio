@@ -22,7 +22,7 @@ const SvgImage = (props) => {
     return (
         <Col xs={6} sm={4} md={2} style={{ padding: "20px" }}>
             <Image data-tip={props.name} className="hover-color" src={props.image} rounded width="100px" height="100px" />
-            <ReactTooltip place="bottom" type="dark" effect="float" />
+            <ReactTooltip place="bottom" type="dark" effect="solid" />
         </Col>
     );
 }
