@@ -9,8 +9,8 @@ import { instagramLink, emailLink, mediumLink, linkedinLink, githubLink } from '
 
 const Footer = (props) => {
     return (
-        <Navbar expand="lg" variant="dark" bg="dark" fixed="bottom" >
-            <Navbar.Brand className="hide-lessthan-400">Contact</Navbar.Brand>
+        <Navbar expand="lg" fixed="bottom" className="bg-dark">
+            <Navbar.Brand className="hide-lessthan-400"></Navbar.Brand>
             <Navbar id="responsive-nav-bar">
                 <Nav>
                     <Nav.Link className="footer-hover-effect" href={emailLink}><FiMail className="bigger-icon" /></Nav.Link>
