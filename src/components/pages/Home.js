@@ -1,9 +1,16 @@
-import React from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect } from 'react';
 import Typist from 'react-typist';
+import { connect } from 'react-redux';
 
 import { profileImage } from '../URLs';
+import { changeHeaderText } from '../../actions';
 
-const Home = () => {
+const Home = ({ changeHeaderText }) => {
+    useEffect(() => {
+        changeHeaderText('Sumeet Rohra');
+    }, []);
+
     return (
         <div className="main default">
             <div className="main-name">
@@ -16,10 +23,10 @@ const Home = () => {
                 </Typist>
             </div>
             <div className="display-image">
-                <img src={profileImage} alt="Me" className="my-image" />
+                <img src={profileImage} rel="preload" alt="Me" className="my-image" />
             </div>
         </div>
     );
 }
 
-export default Home;
+export default connect(null, { changeHeaderText })(Home);

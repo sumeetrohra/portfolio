@@ -1,5 +1,6 @@
-import React, { lazy, Suspense } from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { lazy, Suspense, useEffect } from 'react';
+import { Switch, Route, main } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { fetchData } from '../actions';
@@ -13,30 +14,47 @@ const Skills = lazy(() => import("./pages/Skills"));
 const TicTacToe = lazy(() => import("./pages/TicTacToe"));
 const Talks = lazy(() => import("./pages/Talks"));
 
-class App extends React.Component {
-  componentDidMount() {
-    this.props.fetchData()
-  }
+function App({ fetchData, header }) {
 
-  render() {
-    return (
-      <div className="parent">
-        <Router>
-          <SideBar />
-          <Switch>
-            <Route path="/" exact component={Home} />
-            <Route path="/projects" exact component={WaitingComponent(Projects)} />
-            <Route path="/skills" exact component={WaitingComponent(Skills)} />
-            <Route path="/blogs" exact component={WaitingComponent(Blogs)} />
-            <Route path="/talks" exact component={WaitingComponent(Talks)} />
-            <Route path="/play" exact component={WaitingComponent(TicTacToe)} />
-            <Route path="*" exact component={Home} />
-          </Switch>
-          <Footer />
-        </Router>
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  return (
+    <div className="parent" id="App">
+      <div
+        style={{
+          overflow: 'hidden',
+          backgroundColor: '#f8f9fa',
+          borderBottom: '1px solid #212529',
+          position: 'fixed',
+          top: 0,
+          width: '100%',
+          zIndex: 1000,
+          height: '60px',
+        }}
+      >
+        <SideBar
+          pageWrapId={"page-wrap"}
+          outerContainerId={"App"}
+        />
+        <h3 className="navbar-name">{header}</h3>
       </div>
-    );
-  }
+      <main id="page-wrap">
+        <Switch>
+          <Route path="/" exact component={Home} />
+          <Route path="/projects" exact component={WaitingComponent(Projects)} />
+          <Route path="/skills" exact component={WaitingComponent(Skills)} />
+          <Route path="/blogs" exact component={WaitingComponent(Blogs)} />
+          <Route path="/talks" exact component={WaitingComponent(Talks)} />
+          <Route path="/play" exact component={WaitingComponent(TicTacToe)} />
+          <Route path="*" exact component={Home} />
+        </Switch>
+      </main>
+      <Footer />
+    </div>
+  );
+
 }
 
 function WaitingComponent(Component) {
@@ -47,8 +65,8 @@ function WaitingComponent(Component) {
   );
 }
 
-const mapStateToProps = ({ data }) => {
-  return { data };
+const mapStateToProps = ({ header }) => {
+  return { header };
 }
 
 export default connect(mapStateToProps, { fetchData })(App);

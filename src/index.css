@@ -1,13 +1,108 @@
+html,
+body {
+    margin: 0;
+}
+
+/* Side bar styles start */
+
+#App {
+    font-family: sans-serif;
+
+    /* Give app full page to work with */
+    height: 100vh;
+  }
+
+  .main {
+    padding-top: 50px;
+  }
+
+  #page-wrap {
+    /* Prevent sidebar from showing a scrollbar on page */
+    overflow: auto;
+  }
+
+  a:hover, a:focus, a:active {
+    outline: none;
+  }
+
+  /* Individual item */
+  .bm-item {
+    display: inline-block;
+
+    /* Our sidebar item styling */
+    text-decoration: none;
+    margin-bottom: 10px;
+    color: #d1d1d1;
+    transition: color 0.2s;
+  }
+
+  /* Change color on hover */
+  .bm-item:hover {
+    color: white;
+  }
+
+  /* The rest copied directly from react-burger-menu docs */
+
+  /* Position and sizing of burger button */
+  .bm-burger-button {
+    position: fixed;
+    width: 36px;
+    height: 30px;
+    left: 20px;
+    top: 14px;
+  }
+
+  /* Color/shape of burger icon bars */
+  .bm-burger-bars {
+    background: #212529;
+  }
+
+  /* Position and sizing of clickable cross button */
+  .bm-cross-button {
+    height: 24px;
+    width: 24px;
+  }
+
+  /* Color/shape of close button cross */
+  .bm-cross {
+    background: #bdc3c7;
+  }
+
+  /* General sidebar styles */
+  .bm-menu {
+    background: #212529;
+    padding: 2.5em 1.5em 0;
+    font-size: 20px;
+    overflow: hidden !important;
+  }
+
+  /* Morph shape necessary with bubble or elastic */
+  .bm-morph-shape {
+    fill: #373a47;
+  }
+
+  /* Wrapper for item list */
+  .bm-item-list {
+    color: #fff;
+  }
+
+  /* Styling of overlay */
+  .bm-overlay {
+    background: rgba(0, 0, 0, 0.3);
+  }
+
+/* side bar styles end */
+
 .default {
-    margin-left: 84px;
-    padding: 1%;
-    padding-bottom: 60px;
+    padding-left: 35px;
+    padding-right: 35px;
+    margin-top: 80px;
+    margin-bottom: 60px;
 }
 
 .main {
     display: flex;
     justify-content: space-around;
-    padding-top:6%;
 }
 
 .main-name {
@@ -19,15 +114,15 @@ h1 {
     font-weight: 800;
 }
 
-h6 {
-    font-size: 1.2em;
-    font-weight: 400;
-    color: #f8f9fa;
-}
-
 h5 {
     font-size: 2em;
     font-weight: 600;
+}
+
+#footer-text {
+    color: #f8f9fa;
+    font-size: 1.1em;
+    letter-spacing: 0.03cm;
 }
 
 .my-image {
@@ -49,7 +144,8 @@ h5 {
 }
 
 .bg-dark {
-    background-color: rgb(34, 34, 34) !important;
+    background-color: #212529 !important;
+    justify-content: center;
 }
 
 .navbar-expand-lg {
@@ -75,6 +171,7 @@ h5 {
 
 .nav-item {
     padding-bottom: 10px;
+    cursor: pointer;
 }
 
 .hover-color{
@@ -82,21 +179,28 @@ h5 {
     color: yellow;
 }
 
+.navbar-expand-lg {
+    justify-content: center;
+}
+
+.navbar-name {
+    font-size: 2.4em;
+    font-weight: 700;
+    padding-top: 5px;
+    padding-left: 80px;
+}
+
 @media screen and (max-width: 576px) {
     .main {
         padding: 2%;
         padding-bottom: 60px;
     }
-    .hide-lessthan-400 {
-        display: none;
-    }
-    .navbar-expand-lg {
-        justify-content: flex-end;
-    }
 }
 
 @media screen and (max-width: 850px) {
     .main {
+        padding: 2%;
+        margin: none;
         flex-direction: column-reverse;
         align-items: center;
     }

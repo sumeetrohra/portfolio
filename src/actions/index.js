@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 import {
-    DATA_FETCH
+    DATA_FETCH,
+    PAGE_HEADER
 } from './types';
 
 export const fetchData = () => async dispatch => {
@@ -10,4 +11,11 @@ export const fetchData = () => async dispatch => {
         type: DATA_FETCH,
         payload: data
     });
+};
+
+export const changeHeaderText = (text) => {
+    return {
+        type: PAGE_HEADER,
+        payload: text,
+    };
 };

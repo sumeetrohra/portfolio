@@ -1,72 +1,52 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
-import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import SideNav, { NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
+import { slide as Menu } from 'react-burger-menu';
+import { withRouter } from 'react-router-dom';
+
 import { FaHome, FaBloggerB, FaFileCode, FaSlideshare, FaFilePdf } from 'react-icons/fa';
 import { GoGitBranch } from 'react-icons/go';
 
-// import { RESUME } from './URLs';
-import '@trendmicro/react-sidenav/dist/react-sidenav.css';
-
 const SideBar = (props) => {
-    const url = props.data ? props.data.resumeUrl : 'not available';
-    const { iconStyle, textStyle, sideNavStyle } = styles;
+    const { history, data } = props;
+    const url = data ? data.resumeUrl : 'not available';
+    const { iconStyle, textStyle } = styles;
+
     return (
-        <SideNav
-            style={sideNavStyle}
-        >
-            <SideNav.Toggle />
-            <SideNav.Nav defaultSelected="home">
-                <NavItem eventKey="home" className="nav-item" onClick={() => props.history.push('/')}>
-                    <NavIcon>
-                        <FaHome style={iconStyle} />
-                    </NavIcon>
-                    <NavText style={textStyle}>
-                        Home
-                    </NavText>
-                </NavItem>
-                <NavItem eventKey="projects" className="nav-item" onClick={() => props.history.push('/projects')}>
-                    <NavIcon>
-                        <GoGitBranch style={iconStyle} />
-                    </NavIcon>
-                    <NavText style={textStyle}>
-                        Projects
-                    </NavText>
-                </NavItem>
-                <NavItem eventKey="skills" className="nav-item" onClick={() => props.history.push('/skills')}>
-                    <NavIcon>
-                        <FaFileCode style={iconStyle} />
-                    </NavIcon>
-                    <NavText style={textStyle}>
-                        Skills
-                    </NavText>
-                </NavItem>
-                <NavItem eventKey="blogs" className="nav-item" onClick={() => props.history.push('/blogs')}>
-                    <NavIcon>
-                        <FaBloggerB style={iconStyle} />
-                    </NavIcon>
-                    <NavText style={textStyle}>
-                        Blogs
-                    </NavText>
-                </NavItem>
-                <NavItem eventKey="talks" className="nav-item" onClick={() => props.history.push('/talks')}>
-                    <NavIcon>
-                        <FaSlideshare style={iconStyle} />
-                    </NavIcon>
-                    <NavText style={textStyle}>
-                        Talks
-                    </NavText>
-                </NavItem>
-                <NavItem className="nav-item" onClick={() => window.open(url)}>
-                    <NavIcon>
-                        <FaFilePdf style={iconStyle} />
-                    </NavIcon>
-                    <NavText style={textStyle}>
-                        Resume
-                    </NavText>
-                </NavItem>
-            </SideNav.Nav>
-        </SideNav>
+        <Menu {...props}>
+            <a className="menu-item nav-item" onClick={() => history.push('/')}>
+                <FaHome style={iconStyle} />
+                <h3 style={textStyle}>Home</h3>
+            </a>
+
+            <a className="menu-item nav-item"
+                // onClick={() => history.push('/projects')}
+                href="/projects"
+            >
+                <GoGitBranch style={iconStyle} />
+                <h3 style={textStyle}>Projects</h3>
+            </a>
+
+            <a className="menu-item nav-item" onClick={() => history.push('/skills')}>
+                <FaFileCode style={iconStyle} />
+                <h3 style={textStyle}>Skills</h3>
+            </a>
+
+            <a className="menu-item nav-item" onClick={() => history.push('/blogs')}>
+                <FaBloggerB style={iconStyle} />
+                <h3 style={textStyle}>Blogs</h3>
+            </a>
+
+            <a className="menu-item nav-item" onClick={() => history.push('/talks')}>
+                <FaSlideshare style={iconStyle} />
+                <h3 style={textStyle}>Talks</h3>
+            </a>
+
+            <a className="menu-item nav-item" onClick={() => window.open(url)}>
+                <FaFilePdf style={iconStyle} />
+                <h3 style={textStyle}>Resume</h3>
+            </a>
+        </Menu>
     );
 }
 
@@ -75,16 +55,12 @@ const styles = {
         cursor: "pointer",
         color: "white",
         fontSize: '1.75em',
+        display: 'inline-block',
     },
     textStyle: {
-        cursor: "pointer",
-        color: "white",
-        fontSize: "20px",
-    },
-    sideNavStyle: {
-        position: "fixed",
-        background: "#222",
-        borderRight: "1px solid black",
+        display: 'inline-block',
+        paddingLeft: '10px',
+        margin: 0,
     },
 }
 

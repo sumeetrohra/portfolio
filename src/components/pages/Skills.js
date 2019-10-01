@@ -1,6 +1,10 @@
-import React from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect } from 'react';
 import { Container, Row, Col, Image } from 'react-bootstrap';
 import ReactTooltip from 'react-tooltip';
+import { connect } from 'react-redux';
+
+import { changeHeaderText } from '../../actions';
 
 import html5svg from '../svg/html5svg.svg';
 import css3svg from '../svg/css3svg.svg';
@@ -18,22 +22,25 @@ import flasksvg from '../svg/flasksvg.svg';
 import bootstrapsvg from '../svg/bootstrapsvg.svg';
 import semanticuisvg from '../svg/semanticuisvg.svg';
 
-const SvgImage = (props) => {
+const SvgImage = ({ name, image }) => {
     return (
         <Col xs={6} sm={4} md={2} style={{ padding: "20px" }}>
-            <Image data-tip={props.name} className="hover-color" src={props.image} rounded width="100px" height="100px" />
+            <Image data-tip={name} className="hover-color" src={image} rounded width="100px" height="100px" />
             <ReactTooltip place="bottom" type="dark" effect="solid" />
         </Col>
     );
 }
 
 
-const Skills = () => {
+const Skills = ({ changeHeaderText }) => {
+    useEffect(() => {
+        changeHeaderText('Skills');
+    }, []);
+
     return (
         <>
-            <h1 className="default">Skills.</h1>
-            <Container>
-                <Row style={{ paddingLeft: "60px", paddingBottom: "60px" }}>
+            <Container style={{ paddingTop: '80px' }}>
+                <Row style={{ paddingBottom: "60px" }}>
                     <SvgImage image={html5svg} name="HTML 5" />
                     <SvgImage image={css3svg} name="CSS 3" />
                     <SvgImage image={bootstrapsvg} name="Bootstrap" />
@@ -55,4 +62,4 @@ const Skills = () => {
     )
 }
 
-export default Skills;
+export default connect(null, { changeHeaderText })(Skills);

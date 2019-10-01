@@ -1,11 +1,20 @@
 import {
-    DATA_FETCH
+    DATA_FETCH,
+    PAGE_HEADER,
 } from '../actions/types';
 
-export default (state = {}, action) => {
+const INITIAL_STATE = {
+    data: {},
+    header: 'Sumeet Rohra'
+}
+
+export default (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case DATA_FETCH:
-            return { data: action.payload };
+            return { ...state, data: action.payload };
+
+        case PAGE_HEADER:
+            return { ...state, header: action.payload }
 
         default:
             return state;

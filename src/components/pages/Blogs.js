@@ -1,10 +1,16 @@
-import React from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import Cards from '../Cards';
+import { changeHeaderText } from '../../actions';
 
-const Blogs = (props) => {
-    return <Cards data={props.blogs} name="Blogs." />
+const Blogs = ({ blogs, changeHeaderText }) => {
+    useEffect(() => {
+        changeHeaderText('Blogs');
+    }, []);
+
+    return <Cards data={blogs || []} name="Blogs." />
 }
 
 const mapStateToProps = ({ data }) => {
@@ -12,4 +18,4 @@ const mapStateToProps = ({ data }) => {
     return { blogs };
 }
 
-export default connect(mapStateToProps, null)(Blogs);
+export default connect(mapStateToProps, { changeHeaderText })(Blogs);

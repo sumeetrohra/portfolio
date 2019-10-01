@@ -15,7 +15,7 @@ const cardStyle = {
     cardStyle: {
         borderRadius: "5px",
         cursor: "pointer",
-        width: "40%",
+        width: "30%",
         marginBottom: "40px",
     },
     cardImageStyle: {
@@ -31,16 +31,30 @@ const cardStyle = {
     },
 };
 
-const Cards = (props) => {
+const Cards = ({ data }) => {
     return (
         <div className="default" >
-            <h1 style={cardStyle.h1}>{props.name}</h1>
             <CardColumns id="my-card-columns" style={cardStyle.cardColumnStyle}>
                 {
-                    props.data.map(element => (
-                        <Card key={element.url} id="my-card" style={cardStyle.cardStyle} onClick={() => window.open(element.url)} >
-                            <Card.Title style={cardStyle.cardTitleStyle}><h3>{element.title}</h3></Card.Title>
-                            <Card.Img variant="top" src={element.image} style={cardStyle.cardImageStyle} />
+                    data.map(element => (
+                        <Card
+                            key={element.url}
+                            id="my-card"
+                            style={cardStyle.cardStyle}
+                            onClick={() => window.open(element.url)}
+                        >
+                            <Card.Title
+                                style={cardStyle.cardTitleStyle}
+                            >
+                                <h3>
+                                    {element.title}
+                                </h3>
+                            </Card.Title>
+                            <Card.Img
+                                variant="top"
+                                src={element.image}
+                                style={cardStyle.cardImageStyle}
+                            />
                             <Card.Body>
                                 <Card.Text>
                                     <h6>{element.text}</h6>
