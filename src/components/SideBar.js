@@ -19,10 +19,7 @@ const SideBar = (props) => {
                 <h3 style={textStyle}>Home</h3>
             </a>
 
-            <a className="menu-item nav-item"
-                // onClick={() => history.push('/projects')}
-                href="/projects"
-            >
+            <a className="menu-item nav-item" onClick={() => history.push('/projects')}>
                 <GoGitBranch style={iconStyle} />
                 <h3 style={textStyle}>Projects</h3>
             </a>
