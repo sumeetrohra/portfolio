@@ -3,7 +3,7 @@ import { Card, CardColumns } from 'react-bootstrap';
 
 const cardStyle = {
     h1: {
-        paddingBottom: "100px",
+        paddingBottom: "70px",
     },
     cardColumnStyle: {
         display: "flex",
@@ -31,9 +31,10 @@ const cardStyle = {
     },
 };
 
-const Cards = ({ data }) => {
+const Cards = ({ data, name, closeExpanded }) => {
     return (
-        <div className="default" >
+        <div className="default" onClick={closeExpanded}>
+            <h1 style={cardStyle.h1}>{name}</h1>
             <CardColumns id="my-card-columns" style={cardStyle.cardColumnStyle}>
                 {
                     data.map(element => (

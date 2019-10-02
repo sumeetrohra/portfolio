@@ -44,6 +44,7 @@ class TicTacToe extends Component {
   }
 
   render() {
+    const { closeExpanded } = this.props;
     let have_winner = winner(this.state.board);
     let keep_playing = have_winner === null ? true : false;
     const { dialog } = this.state;
@@ -63,7 +64,7 @@ class TicTacToe extends Component {
     }
 
     return (
-      <div className="master default">
+      <div className="master default" onClick={closeExpanded}>
         <h1 style={h1Style} >Tic Tac Toe</h1>
         <div className="game">
           <div className="board">

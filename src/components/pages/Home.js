@@ -1,18 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect } from 'react';
+import React from 'react';
 import Typist from 'react-typist';
-import { connect } from 'react-redux';
 
 import { profileImage } from '../URLs';
-import { changeHeaderText } from '../../actions';
 
-const Home = ({ changeHeaderText }) => {
-    useEffect(() => {
-        changeHeaderText('Sumeet Rohra');
-    }, []);
-
+const Home = ({ closeExpanded }) => {
     return (
-        <div className="main default">
+        <div className="main default" onClick={closeExpanded} style={{ marginTop: '120px' }}>
             <div className="main-name">
                 <Typist cursor={{ show: false }}>
                     <Typist.Delay ms={2000} />
@@ -29,4 +23,4 @@ const Home = ({ changeHeaderText }) => {
     );
 }
 
-export default connect(null, { changeHeaderText })(Home);
+export default Home;

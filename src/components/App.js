@@ -1,12 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { lazy, Suspense, useEffect } from 'react';
-import { Switch, Route, main } from 'react-router-dom';
+import React, { lazy, Suspense, useEffect, useState } from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { fetchData } from '../actions';
 import Footer from './Footer';
 import Home from './pages/Home';
-import SideBar from './SideBar';
+import Header from './Header';
 
 const Projects = lazy(() => import("./pages/Projects"));
 const Blogs = lazy(() => import("./pages/Blogs"));
@@ -14,61 +14,67 @@ const Skills = lazy(() => import("./pages/Skills"));
 const TicTacToe = lazy(() => import("./pages/TicTacToe"));
 const Talks = lazy(() => import("./pages/Talks"));
 
-function App({ fetchData, header }) {
+function App({ fetchData }) {
+  const [expanded, setExpanded] = useState(false);
+
+  const toggleExpanded = () => setExpanded(!expanded);
+
+  const closeExpanded = () => setExpanded(false);
 
   useEffect(() => {
     fetchData();
   }, []);
 
+  const routes = [
+    {
+      path: '/',
+      component: Home,
+    },
+    {
+      path: '/projects',
+      component: Projects,
+    },
+    {
+      path: '/skills',
+      component: Skills,
+    },
+    {
+      path: '/blogs',
+      component: Blogs,
+    },
+    {
+      path: '/talks',
+      component: Talks,
+    },
+    {
+      path: '/play',
+      component: TicTacToe,
+    },
+  ];
+
   return (
-    <div className="parent" id="App">
-      <div
-        style={{
-          overflow: 'hidden',
-          backgroundColor: '#f8f9fa',
-          borderBottom: '1px solid #212529',
-          position: 'fixed',
-          top: 0,
-          width: '100%',
-          zIndex: 1000,
-          height: '60px',
-        }}
-      >
-        <SideBar
-          pageWrapId={"page-wrap"}
-          outerContainerId={"App"}
-        />
-        <h3 className="navbar-name">{header}</h3>
-      </div>
-      <main id="page-wrap">
-        <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/projects" exact component={WaitingComponent(Projects)} />
-          <Route path="/skills" exact component={WaitingComponent(Skills)} />
-          <Route path="/blogs" exact component={WaitingComponent(Blogs)} />
-          <Route path="/talks" exact component={WaitingComponent(Talks)} />
-          <Route path="/play" exact component={WaitingComponent(TicTacToe)} />
-          <Route path="*" exact component={Home} />
-        </Switch>
-      </main>
-      <Footer />
+    <div className="parent">
+      <Router>
+        <Header toggleExpanded={toggleExpanded} expanded={expanded} closeExpanded={closeExpanded} />
+        <Suspense fallback={<div>Loading...</div>}>
+          <Switch>
+            {routes.map(route => (
+              <Route
+                exact
+                path={route.path}
+                render={(props) => <route.component closeExpanded={closeExpanded} {...props} />}
+              />
+            ))}
+            <Route path="*" exact component={Home} />
+          </Switch>
+        </Suspense>
+        <Footer closeExpanded={closeExpanded} />
+      </Router>
     </div>
   );
 
 }
 
-function WaitingComponent(Component) {
-  return props => (
-    <Suspense fallback={<div>Loading...</div>}>
-      <Component {...props} />
-    </Suspense>
-  );
-}
+// TODO: change the fallback component to a loader
 
-const mapStateToProps = ({ header }) => {
-  return { header };
-}
-
-export default connect(mapStateToProps, { fetchData })(App);
-
-// App bar from here: https://reactjsexample.com/react-side-nav-component/
+export default connect(null, { fetchData })(App);

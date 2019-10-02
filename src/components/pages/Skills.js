@@ -1,10 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Container, Row, Col, Image } from 'react-bootstrap';
 import ReactTooltip from 'react-tooltip';
-import { connect } from 'react-redux';
-
-import { changeHeaderText } from '../../actions';
 
 import html5svg from '../svg/html5svg.svg';
 import css3svg from '../svg/css3svg.svg';
@@ -32,14 +29,22 @@ const SvgImage = ({ name, image }) => {
 }
 
 
-const Skills = ({ changeHeaderText }) => {
-    useEffect(() => {
-        changeHeaderText('Skills');
-    }, []);
-
+const Skills = ({ closeExpanded }) => {
     return (
-        <>
-            <Container style={{ paddingTop: '80px' }}>
+        <div onClick={closeExpanded}>
+            <h1
+                style={{
+                    paddingLeft: '35px',
+                    paddingRight: '35px',
+                    marginTop: '80px',
+                }}
+            >
+                Skills
+            </h1>
+            <Container style={{
+                paddingTop: '20px',
+            }}
+            >
                 <Row style={{ paddingBottom: "60px" }}>
                     <SvgImage image={html5svg} name="HTML 5" />
                     <SvgImage image={css3svg} name="CSS 3" />
@@ -58,8 +63,8 @@ const Skills = ({ changeHeaderText }) => {
                     <SvgImage image={flasksvg} name="Python Flask" />
                 </Row>
             </Container>
-        </>
+        </div>
     )
 }
 
-export default connect(null, { changeHeaderText })(Skills);
+export default Skills;
