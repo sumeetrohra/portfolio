@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 
 import Cards from '../Cards';
 
-const Projects = ({ projects, closeExpanded }) => {
-    return <Cards closeExpanded={closeExpanded} data={projects || []} name="Projects." />;
+const Projects = ({ projects, closeExpanded, style }) => {
+    return <Cards closeExpanded={closeExpanded} data={projects || []} name="Projects." style={style} />;
 }
 
 const mapStateToProps = ({ data }) => {

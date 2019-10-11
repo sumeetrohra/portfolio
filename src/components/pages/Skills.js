@@ -2,6 +2,7 @@
 import React from 'react';
 import { Container, Row, Col, Image } from 'react-bootstrap';
 import ReactTooltip from 'react-tooltip';
+import './skills.css'
 
 import html5svg from '../svg/html5svg.svg';
 import css3svg from '../svg/css3svg.svg';
@@ -29,16 +30,23 @@ const SvgImage = ({ name, image }) => {
 }
 
 
-const Skills = ({ closeExpanded }) => {
+const Skills = ({ closeExpanded, width }) => {
+    let h1style = {
+        paddingLeft: '80px',
+        paddingRight: '35px',
+        marginTop: '10px'
+    }
+    if (width <= 980) {
+        h1style = {
+            paddingLeft: '35px',
+            paddingRight: '35px',
+            marginTop: '80px'
+        }
+    }
+
     return (
         <div onClick={closeExpanded}>
-            <h1
-                style={{
-                    paddingLeft: '35px',
-                    paddingRight: '35px',
-                    marginTop: '80px',
-                }}
-            >
+            <h1 style={h1style}>
                 Skills
             </h1>
             <Container style={{

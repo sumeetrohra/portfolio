@@ -31,9 +31,13 @@ const cardStyle = {
     },
 };
 
-const Cards = ({ data, name, closeExpanded }) => {
+const Cards = ({ data, name, closeExpanded, style }) => {
     return (
-        <div className="default" onClick={closeExpanded}>
+        <div
+            className="default"
+            style={style}
+            onClick={closeExpanded}
+        >
             <h1 style={cardStyle.h1}>{name}</h1>
             <CardColumns id="my-card-columns" style={cardStyle.cardColumnStyle}>
                 {

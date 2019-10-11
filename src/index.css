@@ -4,11 +4,12 @@ body {
 }
 
 .default {
-    padding-left: 35px;
+    padding-left: 80px;
     padding-right: 35px;
-    margin-top: 80px;
+    margin-top: 10px;
     margin-bottom: 80px;
 }
+
 
 .main {
     display: flex;
@@ -98,6 +99,13 @@ h5 {
     font-weight: 700;
     padding-top: 5px;
     padding-left: 80px;
+}
+
+@media screen and (max-width: 980px) {
+    .default {
+        padding-left: 35px;
+        margin-top: 80px;
+    }
 }
 
 @media screen and (max-width: 576px) {

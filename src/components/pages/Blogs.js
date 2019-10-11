@@ -3,8 +3,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import Cards from '../Cards';
-const Blogs = ({ blogs, closeExpanded }) => {
-    return <Cards closeExpanded={closeExpanded} data={blogs || []} name="Blogs." />
+const Blogs = ({ blogs, closeExpanded, style }) => {
+    return <Cards closeExpanded={closeExpanded} data={blogs || []} name="Blogs." style={style} />
 }
 
 const mapStateToProps = ({ data }) => {
