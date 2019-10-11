@@ -2,8 +2,9 @@ import React from 'react';
 import { Navbar, Nav } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { FaBloggerB, FaFileCode, FaSlideshare, FaFilePdf } from 'react-icons/fa';
-import { GoGitBranch } from 'react-icons/go';
+import { FaFilePdf } from 'react-icons/fa';
+
+import { PageLinks } from './pages/PageLinks';
 
 const styles = {
   pStyle: {
@@ -43,38 +44,20 @@ function Header({ data, toggleExpanded, expanded, closeExpanded }) {
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end">
         <Nav>
-          <Nav.Link
-            as={Link}
-            to={`/projects`}
-            onClick={closeExpanded}
-          >
-            <GoGitBranch style={iStyle} />
-            <p style={pStyle}>Projects</p>
-          </Nav.Link>
-          <Nav.Link
-            as={Link}
-            to={`/skills`}
-            onClick={closeExpanded}
-          >
-            <FaFileCode style={iStyle} />
-            <p style={pStyle}>Skills</p>
-          </Nav.Link>
-          <Nav.Link
-            as={Link}
-            to={`/blogs`}
-            onClick={closeExpanded}
-          >
-            <FaBloggerB style={iStyle} />
-            <p style={pStyle}>BLogs</p>
-          </Nav.Link>
-          <Nav.Link
-            as={Link}
-            to={`/talks`}
-            onClick={closeExpanded}
-          >
-            <FaSlideshare style={iStyle} />
-            <p style={pStyle}>Talks</p>
-          </Nav.Link>
+          {
+            PageLinks.map(PageLink => {
+              return (
+                <Nav.Link
+                  as={Link}
+                  to={PageLink.link}
+                  onClick={closeExpanded}
+                >
+                  <PageLink.icon style={iStyle} />
+                  <p style={pStyle}>{PageLink.name}</p>
+                </Nav.Link>
+              );
+            })
+          }
           <Nav.Link as={Link}
             onClick={() => {
               window.open(url);
