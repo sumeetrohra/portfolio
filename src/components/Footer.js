@@ -2,12 +2,19 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Navbar, Nav, Button } from 'react-bootstrap';
 import { GoMarkGithub } from 'react-icons/go';
-import { FaMediumM, FaLinkedin, FaInstagram } from 'react-icons/fa';
+import { FaMediumM, FaLinkedin, FaInstagram, FaYoutube } from 'react-icons/fa';
 import { FiMail } from 'react-icons/fi';
 
-import { instagramLink, emailLink, mediumLink, linkedinLink, githubLink } from './URLs';
+import {
+	instagramLink,
+	emailLink,
+	mediumLink,
+	linkedinLink,
+	githubLink,
+	youtubeUrl
+} from './URLs';
 
-const Footer = ({ history, closeExpanded }) => {
+const Footer = ({ closeExpanded }) => {
 	const footerLinks = [
 		{
 			link: emailLink,
@@ -28,6 +35,10 @@ const Footer = ({ history, closeExpanded }) => {
 		{
 			link: githubLink,
 			icon: <GoMarkGithub className="bigger-icon" />,
+		},
+		{
+			link: youtubeUrl,
+			icon: <FaYoutube className="bigger-icon" />,
 		}
 	];
 
@@ -49,6 +60,7 @@ const Footer = ({ history, closeExpanded }) => {
 					))}
 					<div className="vl"></div>
 					<Button
+						style={{ borderRadius: '5px' }}
 						as={Link}
 						className="footer-hover-effect play-button"
 						variant="light"
@@ -56,7 +68,7 @@ const Footer = ({ history, closeExpanded }) => {
 						onClick={closeExpanded}
 					>
 						Let's Play
-                    </Button>
+					</Button>
 				</Nav>
 			</Navbar>
 		</Navbar >

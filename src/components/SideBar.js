@@ -2,16 +2,18 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import SideNav, { NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
-import { FaFilePdf } from 'react-icons/fa';
+import { FaFilePdf, FaYoutube } from 'react-icons/fa';
 
 import { PageLinks } from './pages/PageLinks';
+import { youtubeUrl } from './URLs';
 
 import '@trendmicro/react-sidenav/dist/react-sidenav.css';
 
 const SideBar = ({ data, history, expanded, toggleExpanded, closeExpanded }) => {
-  const url = data ? data.resumeUrl : 'not available';
+  const resumeUrl = data ? data.resumeUrl : null;
+
   const { iconStyle, textStyle, sideNavStyle } = styles;
-  console.log(PageLinks);
+
   return (
     <SideNav
       style={sideNavStyle}
@@ -24,7 +26,12 @@ const SideBar = ({ data, history, expanded, toggleExpanded, closeExpanded }) => 
         {
           PageLinks.map(PageLink => {
             return (
-              <NavItem eventKey={PageLink.link} className="nav-item" onClick={() => history.push(PageLink.link)}>
+              <NavItem
+                key={PageLink.link}
+                eventKey={PageLink.link}
+                className="nav-item"
+                onClick={() => history.push(PageLink.link)}
+              >
                 <NavIcon>
                   <PageLink.icon style={iconStyle} />
                 </NavIcon>
@@ -35,13 +42,21 @@ const SideBar = ({ data, history, expanded, toggleExpanded, closeExpanded }) => 
             );
           })
         }
-        <NavItem className="nav-item" onClick={() => window.open(url)}>
+        <NavItem className="nav-item" onClick={() => window.open(resumeUrl)}>
           <NavIcon>
             <FaFilePdf style={iconStyle} />
           </NavIcon>
           <NavText style={textStyle}>
             Resume
-                    </NavText>
+          </NavText>
+        </NavItem>
+        <NavItem className="nav-item" onClick={() => window.open(youtubeUrl)}>
+          <NavIcon>
+            <FaYoutube style={iconStyle} />
+          </NavIcon>
+          <NavText style={textStyle}>
+            YouTube
+          </NavText>
         </NavItem>
       </SideNav.Nav>
     </SideNav>

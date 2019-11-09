@@ -2,9 +2,10 @@ import React from 'react';
 import { Navbar, Nav } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { FaFilePdf } from 'react-icons/fa';
+import { FaFilePdf, FaYoutube } from 'react-icons/fa';
 
 import { PageLinks } from './pages/PageLinks';
+import { youtubeUrl } from './URLs';
 
 const styles = {
   pStyle: {
@@ -22,7 +23,7 @@ const styles = {
 }
 
 function Header({ data, toggleExpanded, expanded, closeExpanded }) {
-  const url = data ? data.resumeUrl : 'not available';
+  const resumeUrl = data ? data.resumeUrl : null;
 
   const { pStyle, iStyle } = styles;
 
@@ -48,6 +49,7 @@ function Header({ data, toggleExpanded, expanded, closeExpanded }) {
             PageLinks.map(PageLink => {
               return (
                 <Nav.Link
+                  key={PageLink.link}
                   as={Link}
                   to={PageLink.link}
                   onClick={closeExpanded}
@@ -60,12 +62,21 @@ function Header({ data, toggleExpanded, expanded, closeExpanded }) {
           }
           <Nav.Link as={Link}
             onClick={() => {
-              window.open(url);
+              window.open(resumeUrl);
               closeExpanded();
             }}
           >
             <FaFilePdf style={iStyle} />
             <p style={pStyle}>Resume</p>
+          </Nav.Link>
+          <Nav.Link as={Link}
+            onClick={() => {
+              window.open(youtubeUrl);
+              closeExpanded();
+            }}
+          >
+            <FaYoutube style={iStyle} />
+            <p style={pStyle}>YouTube</p>
           </Nav.Link>
         </Nav>
       </Navbar.Collapse>
