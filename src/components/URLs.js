@@ -1,5 +1,5 @@
 export const emailLink = 'mailto: sumeetrohra1@gmail.com';
-export const instagramLink = 'https://www.instagram.com/sumeet_r0hra/';
+export const instagramLink = 'https://www.instagram.com/mazak_mazak_me_chai_girr_gayi/';
 export const mediumLink = 'https://medium.com/@rohrasumeet';
 export const linkedinLink = 'https://www.linkedin.com/in/sumeetrohra/';
 export const githubLink = 'https://github.com/sumeetrohra';
