@@ -2,18 +2,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Navbar, Nav, Button } from 'react-bootstrap';
 import { GoMarkGithub } from 'react-icons/go';
-import { FaMediumM, FaLinkedin, FaInstagram, FaYoutube } from 'react-icons/fa';
+import { FaLinkedin, FaInstagram } from 'react-icons/fa';
 import { FiMail } from 'react-icons/fi';
-import { DiNpm } from 'react-icons/di';
 
 import {
   instagramLink,
   emailLink,
-  mediumLink,
   linkedinLink,
   githubLink,
-  youtubeUrl,
-  npmUrl,
 } from './URLs';
 
 const Footer = ({ closeExpanded }) => {
@@ -27,24 +23,12 @@ const Footer = ({ closeExpanded }) => {
       icon: <FaInstagram className="bigger-icon" />,
     },
     {
-      link: mediumLink,
-      icon: <FaMediumM className="bigger-icon" />,
-    },
-    {
       link: linkedinLink,
       icon: <FaLinkedin className="bigger-icon" />,
     },
     {
       link: githubLink,
       icon: <GoMarkGithub className="bigger-icon" />,
-    },
-    {
-      link: youtubeUrl,
-      icon: <FaYoutube className="bigger-icon" />,
-    },
-    {
-      link: npmUrl,
-      icon: <DiNpm className="bigger-icon" />,
     },
   ];
 
