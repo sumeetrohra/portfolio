@@ -4,7 +4,7 @@ export const mediumLink = 'https://medium.com/@rohrasumeet';
 export const linkedinLink = 'https://www.linkedin.com/in/sumeetrohra/';
 export const githubLink = 'https://github.com/sumeetrohra';
 export const youtubeUrl =
-  'https://www.youtube.com/channel/UCKvYJFYlUj3RxmKJSQEnrng';
+  'https://www.youtube.com/channel/UCSvh1Fq1FUzaDWKQZ-9kViw';
 export const npmUrl = 'https://www.npmjs.com/~rohrasumeet';
 
 export const profileImage =
